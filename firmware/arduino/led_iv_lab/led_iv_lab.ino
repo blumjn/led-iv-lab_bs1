@@ -117,8 +117,8 @@ void emitMeasurement() {
 }
 
 void startMeasurement() {
-  digitalWrite(PIN_SEL_RES, LOW);
-  digitalWrite(PIN_SEL_LED, HIGH);
+  digitalWrite(PIN_SEL_RES, HIGH);
+  //digitalWrite(PIN_SEL_LED, HIGH);
   phase = SETTLE_LED;
   phaseStart = millis();
 }
