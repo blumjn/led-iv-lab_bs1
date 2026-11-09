@@ -33,7 +33,7 @@ const int PIN_LED_A   = 7;
 const int PIN_LED_G   = 9;
 const int PIN_LED_B   = 10;
 const int PIN_SEL_LED = 11;   // A1 ← V across LED
-const int  = 12;   // A1 ← V across sense resistor
+const int PIN_SEL_RES = 12;   // A1 ← V across sense resistor
 const int PIN_STATUS  = 13;   // onboard red LED
 
 // ---------------------------------------------------------------- analog
@@ -117,7 +117,7 @@ void emitMeasurement() {
 }
 
 void startMeasurement() {
-  digitalWrite(, HIGH);
+  digitalWrite(PIN_SEL_RES, HIGH);
   //digitalWrite(PIN_SEL_LED, HIGH);
   phase = SETTLE_LED;
   phaseStart = millis();
@@ -135,7 +135,7 @@ void serviceMeasurement() {
         vLed = dacVolts;
         Serial.print(dacVolts, 3); Serial.println(' ');
       //  digitalWrite(PIN_SEL_LED, LOW);
-        digitalWrite(, HIGH);
+        digitalWrite(PIN_SEL_RES, HIGH);
         phase = SETTLE_RES;
         phaseStart = now;
       }
