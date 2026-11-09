@@ -132,8 +132,8 @@ void serviceMeasurement() {
       break;
     case SETTLE_LED:
       if (now - phaseStart >= SETTLE_MS) {
-        vLed = readSense();
-        digitalWrite(PIN_SEL_LED, LOW);
+        vLed = dacVolts;
+      //  digitalWrite(PIN_SEL_LED, LOW);
         digitalWrite(PIN_SEL_RES, HIGH);
         phase = SETTLE_RES;
         phaseStart = now;
@@ -142,7 +142,7 @@ void serviceMeasurement() {
     case SETTLE_RES:
       if (now - phaseStart >= SETTLE_MS) {
         vRes = readSense();
-        digitalWrite(PIN_SEL_RES, LOW);
+     //   digitalWrite(PIN_SEL_RES, LOW);
         emitMeasurement();
         oneShot = false;
         phase = IDLE;
