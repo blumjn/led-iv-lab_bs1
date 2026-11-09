@@ -117,7 +117,7 @@ void emitMeasurement() {
 }
 
 void startMeasurement() {
-  digitalWrite(PIN_SEL_RES, LOW);
+  digitalWrite(PIN_SEL_RES, HIGH);
   //digitalWrite(PIN_SEL_LED, HIGH);
   phase = SETTLE_LED;
   phaseStart = millis();
@@ -143,7 +143,7 @@ void serviceMeasurement() {
     case SETTLE_RES:
       if (now - phaseStart >= SETTLE_MS) {
         vRes = readSense();
-     //   digitalWrite(PIN_SEL_RES, LOW);
+     //   digitalWrite(, LOW);
         emitMeasurement();
         oneShot = false;
         phase = IDLE;
@@ -260,11 +260,11 @@ void serviceStatusLed() {
 void setup() {
   pinMode(PIN_LED_R, OUTPUT);  pinMode(PIN_LED_A, OUTPUT);
   pinMode(PIN_LED_G, OUTPUT);  pinMode(PIN_LED_B, OUTPUT);
-  pinMode(PIN_SEL_LED, OUTPUT); pinMode(PIN_SEL_RES, OUTPUT);
+  pinMode(PIN_SEL_LED, OUTPUT); pinMode(, OUTPUT);
   pinMode(PIN_STATUS, OUTPUT);
   allLedSwitchesOff();
   digitalWrite(PIN_SEL_LED, LOW);
-  digitalWrite(PIN_SEL_RES, LOW);
+  digitalWrite(PIN_SEL_RES, HIGH);
 
   analogWriteResolution(DAC_BITS);
   analogReadResolution(ADC_BITS);
