@@ -76,7 +76,7 @@ void setDac(float volts) {
 float readSense() {
   long acc = 0;
   for (int i = 0; i < ADC_OVERSAMPLE; i++) acc += analogRead(PIN_SENSE);
-  Serial.print(PIN_SENSE, 3); Serial.println(' ');
+  Serial.print(PIN_SENSE); Serial.println(' ');
   float code = (float)acc / ADC_OVERSAMPLE;
   return code * ADC_FULL_SCALE_V / ((1 << ADC_BITS) - 1);
 }
