@@ -118,7 +118,7 @@ void emitMeasurement() {
 
 void startMeasurement() {
   digitalWrite(PIN_SEL_RES, LOW);
-  digitalWrite(PIN_SEL_LED, HIGH);
+  //digitalWrite(PIN_SEL_LED, HIGH);
   phase = SETTLE_LED;
   phaseStart = millis();
 }
@@ -133,6 +133,7 @@ void serviceMeasurement() {
     case SETTLE_LED:
       if (now - phaseStart >= SETTLE_MS) {
         vLed = dacVolts;
+        Serial.print(dacVolts, 3); Serial.println(' ');
       //  digitalWrite(PIN_SEL_LED, LOW);
         digitalWrite(PIN_SEL_RES, HIGH);
         phase = SETTLE_RES;
