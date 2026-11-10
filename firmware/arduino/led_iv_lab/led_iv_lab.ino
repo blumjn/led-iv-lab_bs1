@@ -76,7 +76,6 @@ void setDac(float volts) {
 float readSense() {
   long acc = 0;
   for (int i = 0; i < ADC_OVERSAMPLE; i++) acc += analogRead(PIN_SENSE);
-  Serial.print(PIN_SENSE); Serial.println(' ');
   float code = (float)acc / ADC_OVERSAMPLE;
   return code * ADC_FULL_SCALE_V / ((1 << ADC_BITS) - 1);
 }
@@ -133,7 +132,7 @@ void serviceMeasurement() {
       break;
     case SETTLE_LED:
       if (now - phaseStart >= SETTLE_MS) {
-        vLed = dacVolts;
+        vLed = 0.8554*dacVolts-0.1491;
         Serial.print(dacVolts, 3); Serial.println(' ');
       //  digitalWrite(PIN_SEL_LED, LOW);
         digitalWrite(PIN_SEL_RES, HIGH);
